@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sk-users
+    labels:
+        app: sk-users
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            run: sk-users
+    template:
+        metadata:
+            creationTimestamp: null
+            labels:
+              run: sk-users
+        spec:
+            containers:
+            - name: sk-users
+              image: sk-users:1.0
+              ports:
+                - containerPort: 8080

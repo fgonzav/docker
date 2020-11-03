@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: auth-service
+    labels:
+        app: auth-service
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            run: auth-service
+    template:
+        metadata:
+            creationTimestamp: null
+            labels:
+              run: auth-service
+        spec:
+            containers:
+            - name: auth-service
+              image: auth-service:1.0
+              ports:
+                - containerPort: 8080
