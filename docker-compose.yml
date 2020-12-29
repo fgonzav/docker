@@ -1,0 +1,30 @@
+version: "3.8"
+services: 
+    discovery:
+#        build: 
+#            context: ../sk-discovery
+        image: "sk-discovery:1.0"
+        ports:
+            - "8761:8761"
+    auth-app: 
+#        build:
+#            context: ../auth-app
+        image: "auth-app:1.0"
+        ports:
+            - "8080"
+        depends_on: 
+            - discovery
+            - ldap
+    ldap:
+#        build:
+#            context: ./alpine-openldap
+        image: "ldap:1.0"
+        ports: 
+            - "389:389"
+    config:
+        image: "configserver:1.0"
+        ports:
+            - "8888:8888"
+        depends_on:
+            - discovery
+
