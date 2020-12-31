@@ -1,5 +1,0 @@
-version: 1
-dn: dc=secretkeeper,dc=com
-objectClass: dcObject
-objectClass: organization
-o: Secret Keeper

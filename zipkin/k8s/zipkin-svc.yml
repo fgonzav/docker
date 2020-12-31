@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: trace-svc
+  labels:
+    app: zipkin
+spec:
+#  type: LoadBalancer
+  type: NodePort
+  ports:
+    - port: 9411
+      protocol: TCP
+#      targetPort: 10000
+  selector:
+    app: zipkin
